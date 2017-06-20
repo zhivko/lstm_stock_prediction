@@ -24,7 +24,7 @@ def get_stock_data(stock_name, normalized=0):
 	df = pd.DataFrame(stocks)
 	date_split = df['Date'].str.split('-').str
 	df['Year'], df['Month'], df['Day'] = date_split
-	df["Volume"] = df["Volume"] / 10000
+	df["Volume"] = df["Volume"] / 1000
 	#df.drop(df.columns[[0,3,5,6, 7,8,9]], axis=1, inplace=True)
 	df.drop(df.columns[[0,3,5,6, 7,8]], axis=1, inplace=True)
 	return df
@@ -99,7 +99,7 @@ def build_model2(layers):
         return model
     
     
-window = 22
+window = 5
 X_train, y_train, X_test, y_test = load_data(df[::-1], window)
 print("X_train", X_train.shape)
 print("y_train", y_train.shape)
