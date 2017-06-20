@@ -1,5 +1,6 @@
 # https://github.com/etai83/lstm_stock_prediction/blob/master/.ipynb_checkpoints/GOOGLE%20stock%20prediction-checkpoint.ipynb
 
+import urllib.parse
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -29,7 +30,7 @@ def get_stock_data(stock_name, normalized=0):
 	df.drop(df.columns[[0,3,5,6, 7,8]], axis=1, inplace=True)
 	return df
 
-stock_name = "NASDAQ%3ATSLA"
+stock_name = urllib.parse.quote('NASDAQ:TSLA')
 df = get_stock_data(stock_name,0)
 df.head()
 
