@@ -93,8 +93,8 @@ def build_model2(layers):
         model.add(Dropout(d))
         model.add(LSTM(64, input_shape=(layers[1], layers[0]), return_sequences=False))
         model.add(Dropout(d))
-        model.add(Dense(16,init='uniform',activation='relu'))        
-        model.add(Dense(1,init='uniform',activation='linear'))
+        model.add(Dense(16, kernel_initializer='uniform', activation='relu'))        
+        model.add(Dense(1, kernel_initializer='uniform', activation='linear'))
         model.compile(loss='mse',optimizer='adam',metrics=['accuracy'])
         return model
     
@@ -114,7 +114,7 @@ model.fit(
     X_train,
     y_train,
     batch_size=512,
-    nb_epoch=500,
+    epochs=500,
     validation_split=0.1,
     verbose=1)
 
