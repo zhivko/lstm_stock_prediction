@@ -26,6 +26,8 @@ def get_stock_data(stock_name, normalized=0):
 	date_split = df['Date'].str.split('-').str
 	df['Year'], df['Month'], df['Day'] = date_split
 	df["Volume"] = df["Volume"] / 1000
+	df["Close"] = df["Close"] / 1000
+	df["High"] = df["High"] / 1000
 	#df.drop(df.columns[[0,3,5,6, 7,8,9]], axis=1, inplace=True)
 	df.drop(df.columns[[0,3,5,6, 7,8]], axis=1, inplace=True)
 	return df
@@ -107,8 +109,8 @@ print("y_train", y_train.shape)
 print("X_test", X_test.shape)
 print("y_test", y_test.shape)
 
-
-# model = build_model([3,lag,1])
+lag = 2
+#model = build_model([3,lag,1])
 model = build_model2([3,window,1])
 
 model.fit(
